@@ -88,9 +88,9 @@ try {
     print (($rv->getEndpoint() === itunesReceiptValidator::SANDBOX_URL) ? 'Sandbox' : 'Production');
     print '<br />';
 
-    $info = $rv->validateReceipt();
+    $json = $rv->validateReceipt();
     echo 'Success! The returned JSON is: <br />';
-    echo format_json($info, true);
+    echo format_json(json_encode($json), true);
 }
 catch (Exception $ex) {
     echo $ex->getMessage() . '<br />';
