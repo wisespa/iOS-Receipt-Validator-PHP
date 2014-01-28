@@ -2,8 +2,8 @@
 
 include __DIR__ . '/../itunesReceiptValidator.php';
 
-if (isset($_GET['receipt'])) {
-    $receipt  = $_GET['receipt'];
+if (isset($_POST['receipt'])) {
+    $receipt  = $_POST['receipt'];
 }
 else {
     print 'No receipt to validate. Exiting.<br />';
