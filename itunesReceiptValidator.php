@@ -65,21 +65,35 @@ class itunesReceiptValidator {
     }
 
     private function makeRequest() {
-        $ch = curl_init($this->endpoint);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $this->encodeRequest());
+//         $ch = curl_init($this->endpoint);
+//         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+//         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//         curl_setopt($ch, CURLOPT_POST, true);
+//         curl_setopt($ch, CURLOPT_POSTFIELDS, $this->encodeRequest());
+// 
+//         $response = curl_exec($ch);
+//         $errno    = curl_errno($ch);
+//         $errmsg   = curl_error($ch);
+//         curl_close($ch);
+// 
+//         if ($errno != 0) {
+//             throw new Exception($errmsg, $errno);
+//         }
 
-        $response = curl_exec($ch);
-        $errno    = curl_errno($ch);
-        $errmsg   = curl_error($ch);
-        curl_close($ch);
+    // use key 'http' even if you send the request to https://...
+    // This: 'content' => http_build_query($data),
+    // seems to generate an error (21002)
+    $options = array(
+        'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded",
+            'method'  => 'POST',
+            'content' => $this->encodeRequest()
+        ),
+    );
+    $context  = stream_context_create($options);
+    $response = file_get_contents($this->endpoint, false, $context);
 
-        if ($errno != 0) {
-            throw new Exception($errmsg, $errno);
-        }
 
         return $response;
     }
