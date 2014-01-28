@@ -81,6 +81,7 @@ class itunesReceiptValidator {
 //             throw new Exception($errmsg, $errno);
 //         }
 
+$data = '{"receipt-data" : "'.$this->getReceipt().'"}';
     // use key 'http' even if you send the request to https://...
     // This: 'content' => http_build_query($data),
     // seems to generate an error (21002)
@@ -88,7 +89,7 @@ class itunesReceiptValidator {
         'http' => array(
             'header'  => "Content-type: application/x-www-form-urlencoded",
             'method'  => 'POST',
-            'content' => $this->encodeRequest()
+            'content' => $data
         ),
     );
     $context  = stream_context_create($options);
