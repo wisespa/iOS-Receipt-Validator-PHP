@@ -13,7 +13,7 @@ else {
 $endpoint = isset($_GET['sandbox']) ? itunesReceiptValidator::SANDBOX_URL : itunesReceiptValidator::PRODUCTION_URL;
 
 try {
-    $rv = new itunesReceiptValidator($endpoint, 'fake_receipt');
+    $rv = new itunesReceiptValidator($endpoint, $receipt);
 
     print 'Environment: <br />';
     print (($rv->getEndpoint() === itunesReceiptValidator::SANDBOX_URL) ? 'Sandbox' : 'Production');
