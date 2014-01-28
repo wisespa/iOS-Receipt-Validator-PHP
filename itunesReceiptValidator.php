@@ -67,7 +67,7 @@ class itunesReceiptValidator {
         	'http' => array(
             'header'  => "Content-type: application/json",
             'method'  => 'POST',
-            'content' => $this->encodeRequest()
+            'content' => $data
        		 ),
     	);
     	$context  = stream_context_create($options);
