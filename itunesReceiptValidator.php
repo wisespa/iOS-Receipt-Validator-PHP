@@ -58,6 +58,8 @@ class itunesReceiptValidator {
 
     private function makeRequest() {
 
+		//$data = $this->encodeRequest();
+		$data = '{"receipt-data" : "'.$this->getReceipt().'"}';
     	// use key 'http' even if you send the request to https://...
     	// This: 'content' => http_build_query($data),
     	// seems to generate an error (21002)
