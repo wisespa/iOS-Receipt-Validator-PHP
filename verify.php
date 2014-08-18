@@ -90,7 +90,7 @@ try {
     $rv = new IAPValidator($endpoint, $receipt, $secret);
 
     print 'Environment: ';
-    print (($rv->getEndpoint() === IAPValidator::SANDBOX_URL) ? 'Sandbox' : 'Production');
+    print ( isset($_GET['sandbox'])  ? 'Sandbox' : 'Production');
     print '<br />';
     print '<br />';
 
