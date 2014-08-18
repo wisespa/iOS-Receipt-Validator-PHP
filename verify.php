@@ -70,10 +70,11 @@ include __DIR__ . '/iapvalidator.php';
 
         return $result;
     }
-
+    
+$receipt = NULL;
 if (isset($_POST['receipt'])) {
     $receipt  = $_POST['receipt'];
-    echo 'receipt is:<br/>';
+    echo 'Receipt:<br/>';
     echo $receipt;
 }
 else {
@@ -84,13 +85,13 @@ else {
 $product = NULL;
 if (isset($_POST['product']) && trim($_POST['product']) !='') {
     $product  = $_POST['product'];
-	echo '<br/>product is: '.$product;
+	echo '<br/>Product: '.$product;
 }
 
 $secret = NULL;
 if (isset($_POST['secret']) && trim($_POST['secret']) !='') {
     $secret  = $_POST['secret'];
-    echo '<br/>secret is: '.$product.'<br/>';
+    echo '<br/>Secret: '.$secret.'<br/>';
 }
 
 try {
