@@ -66,6 +66,8 @@ class IAPValidator {
 	    		$resultMsg['errorMsg'] = 'FAKE ORDER -- Receipt too short (< 1000)';
 	    		$resultMsg['isValid'] = false;
 	    		$resultMsg['isVerified'] = true;
+	    		$resultMsg['receipt'] = $this->receipt;
+
 	    		return $resultMsg;
 	    	}
     	 	    	
