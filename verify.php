@@ -73,21 +73,28 @@ include __DIR__ . '/iapvalidator.php';
 
 if (isset($_POST['receipt'])) {
     $receipt  = $_POST['receipt'];
+    echo 'receipt is:<br/>';
+    echo $receipt;
 }
 else {
     print 'No receipt to validate. Exiting.<br />';
     return;
 }
 
+$product = NULL;
+if (isset($_POST['product']) && trim($_POST['product']) !='') {
+    $product  = $_POST['product'];
+	echo '<br/>product is: '.$product;
+}
+
 $secret = NULL;
 if (isset($_POST['secret']) && trim($_POST['secret']) !='') {
     $secret  = $_POST['secret'];
+    echo '<br/>secret is: '.$product.'<br/>';
 }
 
-$endpoint = isset($_GET['sandbox']) ? IAPValidator::SANDBOX_URL : IAPValidator::PRODUCTION_URL;
-
 try {
-    $rv = new IAPValidator($endpoint, $receipt, $secret);
+    $rv = new IAPValidator(isset($_GET['sandbox']), $receipt, $product, $secret);
 
     print 'Environment: ';
     print ( isset($_GET['sandbox'])  ? 'Sandbox' : 'Production');
