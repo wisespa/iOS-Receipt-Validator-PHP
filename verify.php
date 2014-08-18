@@ -84,13 +84,13 @@ if (isset($_POST['secret']) && trim($_POST['secret']) !='') {
     $secret  = $_POST['secret'];
 }
 
-$endpoint = isset($_GET['sandbox']) ? itunesReceiptValidator::SANDBOX_URL : itunesReceiptValidator::PRODUCTION_URL;
+$endpoint = isset($_GET['sandbox']) ? IAPValidator::SANDBOX_URL : IAPValidator::PRODUCTION_URL;
 
 try {
     $rv = new IAPValidator($endpoint, $receipt, $secret);
 
     print 'Environment: ';
-    print (($rv->getEndpoint() === itunesReceiptValidator::SANDBOX_URL) ? 'Sandbox' : 'Production');
+    print (($rv->getEndpoint() === IAPValidator::SANDBOX_URL) ? 'Sandbox' : 'Production');
     print '<br />';
     print '<br />';
 
