@@ -12,7 +12,6 @@ Enter Receipt Token (b64)<br /><br />  <textarea type="text" style="width:300px;
 Enter Shared Secret<br /><br /> <input type="text" style="width:300px; height:25px; font-family:helvetica,arial; font-size:16px;" name="secret"></input><br /><br />
 <input type="submit" value="Validate" />
 </form>
-<?php } ?>
 </div>
 </body>
 </html> 

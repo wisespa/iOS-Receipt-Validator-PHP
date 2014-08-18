@@ -14,7 +14,6 @@ Enter Shared Secret<br /><br /> <input type="text" style="width:300px; height:25
 
 <input type="submit" value="Validate" />
 </form>
-<?php } ?>
 </div>
 </body>
 </html> 
