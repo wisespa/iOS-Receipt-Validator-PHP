@@ -1,6 +1,6 @@
 <?php
 
-include __DIR__ . '/../itunesReceiptValidator.php';
+include __DIR__ . '/iapvalidator.php';
 
     function format_json($json, $html = false, $tabspaces = null)
     {
@@ -79,17 +79,24 @@ else {
     return;
 }
 
+$secret = NULL;
+if (isset($_POST['secret']) && trim($_POST['secret']) !='') {
+    $secret  = $_POST['secret'];
+}
+
 $endpoint = isset($_GET['sandbox']) ? itunesReceiptValidator::SANDBOX_URL : itunesReceiptValidator::PRODUCTION_URL;
 
 try {
-    $rv = new itunesReceiptValidator($endpoint, $receipt);
+    $rv = new IAPValidator($endpoint, $receipt, $secret);
 
     print 'Environment: ';
     print (($rv->getEndpoint() === itunesReceiptValidator::SANDBOX_URL) ? 'Sandbox' : 'Production');
     print '<br />';
+    print '<br />';
 
     $json = $rv->validateReceipt();
-    echo 'Success! The returned JSON is: <br />';
+    echo 'Success! The returned JSON is: <br /><br />';
+    
     echo format_json(json_encode($json), true);
 }
 catch (Exception $ex) {
