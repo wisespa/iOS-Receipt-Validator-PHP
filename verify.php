@@ -102,7 +102,7 @@ try {
     print '<br />';
     print '<br />';
 
-    $json = $rv->validateReceipt();
+    $json = $rv->validateReceipt(true);
     echo 'Success! The returned JSON is: <br /><br />';
     
     echo format_json(json_encode($json), true);
