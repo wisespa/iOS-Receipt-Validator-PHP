@@ -67,6 +67,7 @@ class IAPValidator {
 	    		$resultMsg['isValid'] = false;
 	    		$resultMsg['isVerified'] = true;
 	    		$resultMsg['receipt'] = $this->receipt;
+	    		$resultMsg['receiptlen'] = strlen($this->receipt);
 
 	    		return $resultMsg;
 	    	}
