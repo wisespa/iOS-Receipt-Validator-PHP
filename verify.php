@@ -58,10 +58,10 @@ include __DIR__ . '/iapvalidator.php';
                         $inquote = !$inquote;
                         $result .= $char;
                         break;
-                    case '\\':
-                        if ($inquote) $ignorenext = true;
-                        $result .= $char;
-                        break;
+//                     case '\\':
+//                         if ($inquote) $ignorenext = true;
+//                         $result .= $char;
+//                         break;
                     default:
                         $result .= $char;
                 }
