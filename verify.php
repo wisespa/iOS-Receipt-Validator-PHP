@@ -58,10 +58,10 @@ include __DIR__ . '/iapvalidator.php';
                         $inquote = !$inquote;
                         $result .= $char;
                         break;
-//                     case '\\':
-//                         if ($inquote) $ignorenext = true;
-//                         $result .= $char;
-//                         break;
+                    case '\\':
+                        if ($inquote) $ignorenext = true;
+                        $result .= $char;
+                        break;
                     default:
                         $result .= $char;
                 }
@@ -105,7 +105,7 @@ try {
     $json = $rv->validateReceipt(true);
     echo 'Success! The returned JSON is: <br /><br />';
     
-    echo format_json(json_encode($json), true);
+    echo json_encode($json, JSON_PRETTY_PRINT);
 }
 catch (Exception $ex) {
     echo $ex->getMessage() . '<br />';
