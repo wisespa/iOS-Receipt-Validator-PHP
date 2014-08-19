@@ -106,7 +106,7 @@ try {
     $json = $rv->validateReceipt(true);
     echo "Success! The returned JSON is: \n\n";
     
-    echo json_encode($json, JSON_PRETTY_PRINT);
+    echo json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 }
 catch (Exception $ex) {
     echo $ex->getMessage() . "\n";
