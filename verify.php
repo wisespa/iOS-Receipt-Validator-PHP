@@ -75,24 +75,24 @@ echo "<pre>";
 $receipt = NULL;
 if (isset($_POST['receipt'])) {
     $receipt  = $_POST['receipt'];
-    echo 'Receipt:\n';
+    echo "Receipt:\n";
     echo $receipt;
 }
 else {
-    print 'No receipt to validate. Exiting.\n';
+    print "No receipt to validate. Exiting.\n";
     return;
 }
 
 $product = NULL;
 if (isset($_POST['product']) && trim($_POST['product']) !='') {
     $product  = $_POST['product'];
-	echo '\nProduct: '.$product;
+	echo "\nProduct: ".$product;
 }
 
 $secret = NULL;
 if (isset($_POST['secret']) && trim($_POST['secret']) !='') {
     $secret  = $_POST['secret'];
-    echo '\nSecret: '.$secret.'\n';
+    echo "\nSecret: ".$secret."\n";
 }
 
 try {
@@ -100,16 +100,16 @@ try {
 
     print 'Environment: ';
     print ( isset($_GET['sandbox'])  ? 'Sandbox' : 'Production');
-    print '\n';
-    print '\n';
+    print "\n";
+    print "\n";
 
     $json = $rv->validateReceipt(true);
-    echo 'Success! The returned JSON is: \n\n';
+    echo "Success! The returned JSON is: \n\n";
     
     echo json_encode($json, JSON_PRETTY_PRINT);
 }
 catch (Exception $ex) {
-    echo $ex->getMessage() . '\n';
+    echo $ex->getMessage() . "\n";
 }
 
 echo "</pre>";
