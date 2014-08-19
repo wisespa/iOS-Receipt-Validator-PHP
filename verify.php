@@ -11,7 +11,7 @@ include __DIR__ . '/iapvalidator.php';
 
         if ($html) {
             $tab = str_repeat("&nbsp;", ($tabspaces == null ? 4 : $tabspaces));
-            $newline = "<br/>";
+            $newline = "\n";
         } else {
             $tab = ($tabspaces == null ? "\t" : str_repeat(" ", $tabspaces));
             $newline = "\n";
@@ -70,28 +70,29 @@ include __DIR__ . '/iapvalidator.php';
 
         return $result;
     }
-    
+echo "<pre>";
+
 $receipt = NULL;
 if (isset($_POST['receipt'])) {
     $receipt  = $_POST['receipt'];
-    echo 'Receipt:<br/>';
+    echo 'Receipt:\n';
     echo $receipt;
 }
 else {
-    print 'No receipt to validate. Exiting.<br />';
+    print 'No receipt to validate. Exiting.\n';
     return;
 }
 
 $product = NULL;
 if (isset($_POST['product']) && trim($_POST['product']) !='') {
     $product  = $_POST['product'];
-	echo '<br/>Product: '.$product;
+	echo '\nProduct: '.$product;
 }
 
 $secret = NULL;
 if (isset($_POST['secret']) && trim($_POST['secret']) !='') {
     $secret  = $_POST['secret'];
-    echo '<br/>Secret: '.$secret.'<br/>';
+    echo '\nSecret: '.$secret.'\n';
 }
 
 try {
@@ -99,14 +100,17 @@ try {
 
     print 'Environment: ';
     print ( isset($_GET['sandbox'])  ? 'Sandbox' : 'Production');
-    print '<br />';
-    print '<br />';
+    print '\n';
+    print '\n';
 
     $json = $rv->validateReceipt(true);
-    echo 'Success! The returned JSON is: <br /><br />';
+    echo 'Success! The returned JSON is: \n\n';
     
     echo json_encode($json, JSON_PRETTY_PRINT);
 }
 catch (Exception $ex) {
-    echo $ex->getMessage() . '<br />';
+    echo $ex->getMessage() . '\n';
 }
+
+echo "</pre>";
+
