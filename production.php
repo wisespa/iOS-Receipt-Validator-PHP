@@ -9,6 +9,7 @@
 <div id="retData" style="float:center; text-align:center; font-family:helvetica,arial; font-size:16px;">
 <form name="receipttoken" action="verify.php" method="post">
 Enter Receipt Token (b64)<br /><br />  <textarea type="text" style="width:300px; height:200px; font-family:helvetica,arial; font-size:16px;" name="receipt"></textarea><br /><br />
+Enter Product Id<br /><br /> <input type="text" style="width:300px; height:25px; font-family:helvetica,arial; font-size:16px;" name="product"></input><br /><br />
 Enter Shared Secret<br /><br /> <input type="text" style="width:300px; height:25px; font-family:helvetica,arial; font-size:16px;" name="secret"></input><br /><br />
 <input type="submit" value="Validate" />
 </form>
